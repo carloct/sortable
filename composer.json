@@ -1,0 +1,39 @@
+{
+  "name": "carloct/sortable",
+  "description": "Sortable trait for Eloquent models",
+  "homepage": "https://github.com/carloct/sortable",
+  "authors": [
+    {
+      "name": "Carlo",
+      "email": "dexter.ward@gmail.com"
+    }
+  ],
+  "keywords":
+  [
+    "sort",
+    "sortable",
+    "eloquent",
+    "model"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "4.*",
+    "scrutinizer/ocular": "~1.1",
+    "orchestra/testbench": "~3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Keisen\\Sortable\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Keisen\\Sortable\\Test\\": "tests"
+    }
+  },
+  "minimum-stability": "stable"
+}
