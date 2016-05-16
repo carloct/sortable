@@ -7,11 +7,11 @@ interface Sortable
     /*
      * Set the last order value
      */
-    public function setLastPosition();
+    public function appendToLastPosition();
 
     public function scopeOrdered(\Illuminate\Database\Eloquent\Builder $query);
 
-    public function setPosition($position);
+    public function setPosition(int $position);
 
     public function shouldSortWhenCreating();
 }
