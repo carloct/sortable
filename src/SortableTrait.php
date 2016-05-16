@@ -30,6 +30,11 @@ trait SortableTrait
 
     protected function getPositionColumnName()
     {
+        if (isset($this->sortable['position_column_name']) &&
+            !empty($this->sortable['position_column_name'])
+        ) {
+            return $this->sortable['position_column_name'];
+        }
         return 'position';
     }
 

@@ -27,6 +27,36 @@ class SortableTest extends TestCase
     /**
      * @test
      */
+    public function it_will_determine_to_sort_when_creating_if_sortable_attribute_does_not_exist()
+    {
+        $model = new Entry();
+        $this->assertTrue($model->shouldSortWhenCreating());
+    }
+
+    /**
+     * @test
+     */
+    public function it_will_determine_to_sort_when_creating_if_sort_when_creating_setting_does_not_exist()
+    {
+        $model = new EntryWithSettings();
+        $this->assertTrue($model->shouldSortWhenCreating());
+    }
+
+    /**
+     * @test
+     */
+    public function it_will_respect_the_sort_when_creating_setting()
+    {
+        $model = new EntryWithSettings();
+        $model->sortable['sort_when_creating'] = true;
+        $this->assertTrue($model->shouldSortWhenCreating());
+        $model->sortable['sort_when_creating'] = false;
+        $this->assertFalse($model->shouldSortWhenCreating());
+    }
+
+    /**
+     * @test
+     */
     public function it_shifts_backward_on_ordering()
     {
         $entry = Entry::where(['name' => '4'])->first();

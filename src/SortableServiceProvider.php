@@ -32,18 +32,16 @@ class SortableServiceProvider extends ServiceProvider
         });
 
         $this->app['events']->listen('eloquent.updating*', function ($model) {
-            if ($model instanceof Sortable) {
-                if ($model->position < $model->old_position) {
-                    $model
-                        ->whereIn('position', range($model->position, $model->old_position - 1))
-                        ->increment('position');
-                }
+            if ($model instanceof Sortable && $model->position < $model->old_position) {
+                $model
+                    ->whereIn('position', range($model->position, $model->old_position - 1))
+                    ->increment('position');
+            }
 
-                if ($model->position > $model->old_position) {
-                    $model
-                        ->whereIn('position', range($model->old_position + 1, $model->position))
-                        ->decrement('position');
-                }
+            if ($model instanceof Sortable && $model->position > $model->old_position) {
+                $model
+                    ->whereIn('position', range($model->old_position + 1, $model->position))
+                    ->decrement('position');
             }
         });
     }
