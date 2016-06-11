@@ -4,8 +4,6 @@ namespace Keisen\Sortable;
 
 trait SortableTrait
 {
-    public $old_position = 0;
-
     public function appendToLastPosition()
     {
         $orderColumnName = $this->getPositionColumnName();
@@ -24,7 +22,6 @@ trait SortableTrait
 
     public function setPosition(int $position)
     {
-        $this->old_position = $this->position;
         $this->position = $position;
     }
 
